@@ -1,4 +1,40 @@
-﻿div.login {
+﻿body.template {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 75%;
+    color: #666666;
+}
+div.appTitle {
+    position: fixed;
+    top: 8px;
+    padding-bottom: 16px;
+    border-bottom: 1px dotted #bbbbbb;
+    margin-right: 10px;
+    font-size: 2.2em;
+    font-family: Trebuchet MS, Arial, sans-serif;
+    color: #888888;
+    font-variant: small-caps;
+    width: 97%;
+}
+div.menu {
+    padding: 4px 0px 4px 8px;
+}
+div.content {
+    position: fixed;
+    top: 95px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: auto;
+    padding: 8px;
+}
+div.SiteMapPath {
+    position: fixed;
+    top: 42px;
+    padding-bottom: 5px;
+}
+div.login {
     position: relative;
     
     display: flex;
