@@ -1,17 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Battle.aspx.cs" Inherits="Battle" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Battle.aspx.cs" Inherits="Battle" MasterPageFile="~/Site.master"%>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <div class="Table">
+        <div class="TableRow">
+            <asp:Label ID="Label2" runat="server" Text="Здесь будут драки!"></asp:Label>
+         </div>
+        <div class="TableRow">
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         </div>
-    </form>
-</body>
-</html>
+    </div>  
+</asp:Content>

@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true">
-  <siteMapNode url="~/Default.aspx" title="Welcome"  description="" roles="*">
-    <siteMapNode url="~/Battle.aspx" title="Battle"  description="" />
-    <siteMapNode url="~/Feeding.aspx" title="Feeding"  description="" />
-	<siteMapNode url="~/Work.aspx" title="Work"  description="" />
+  <siteMapNode url="~/Default.aspx" title="Welcome!"  description="Welcome to my game!" roles="*">
+	  <siteMapNode title="Game">
+		  <siteMapNode url="~/Battle.aspx" title="Battle"  description="" />
+		  <siteMapNode url="~/Feeding.aspx" title="Feeding"  description="" />
+		  <siteMapNode url="~/Work.aspx" title="Work"  description="" />
+	  </siteMapNode>
+	  <siteMapNode url="" title="Help"  description="" />
+	  
   </siteMapNode>
 </siteMap>

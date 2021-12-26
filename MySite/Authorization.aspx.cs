@@ -44,7 +44,9 @@ public partial class Authorization : System.Web.UI.Page
             {
                 reader.Read();
                 id_player = (int)reader.GetValue(0);
-                Response.Redirect("Default.aspx?value=" + id_player);
+                Session["Value"] = id_player;
+                Session["Name"] = reader.GetValue(1);
+                Response.Redirect("Default.aspx");
             }
                 
             sConn.Close();

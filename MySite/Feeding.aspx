@@ -1,17 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Feeding.aspx.cs" Inherits="Feeding" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Feeding.aspx.cs" Inherits="Feeding" MasterPageFile="~/Site.master"%>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
-</body>
-</html>
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+        <asp:Label ID="Label1" runat="server" Text="Здесь мы пойдем ловить мух)"></asp:Label>
+</asp:Content>
