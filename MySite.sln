@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MySite", "MySite\", "{D7D2C853-A168-4197-ABBF-B1658A17A8DD}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		ProjectReferences = "{3f321a9d-a1c4-46d4-8f25-71a1de6c3795}|MyLibrary.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_54384"
 		Debug.AspNetCompiler.PhysicalPath = "MySite\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54384\"
@@ -21,16 +22,26 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MySite", "MySite\", "{D7D2C
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "54384"
+		SlnRelativePath = "MySite\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibrary", "MyLibrary\MyLibrary.csproj", "{3F321A9D-A1C4-46D4-8F25-71A1DE6C3795}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D7D2C853-A168-4197-ABBF-B1658A17A8DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D7D2C853-A168-4197-ABBF-B1658A17A8DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D2C853-A168-4197-ABBF-B1658A17A8DD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D2C853-A168-4197-ABBF-B1658A17A8DD}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3F321A9D-A1C4-46D4-8F25-71A1DE6C3795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F321A9D-A1C4-46D4-8F25-71A1DE6C3795}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F321A9D-A1C4-46D4-8F25-71A1DE6C3795}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F321A9D-A1C4-46D4-8F25-71A1DE6C3795}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

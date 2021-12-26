@@ -1,0 +1,39 @@
+﻿div.login {
+    position: relative;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+div.TableErrors {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+div.Table {
+    position: relative;
+    top: 25px;
+    border-collapse: collapse;
+    border-width: 0px;
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    line-height: 2em;
+    width: 100%;
+    left: 0px;
+}
+div.TableRow {
+    display: table-row;
+}
+div.TableLeftCol {
+    float: left;
+    text-align: right;
+    padding-right: .5%;
+    width: 49.5%;
+}
+div.TableRightCol {
+    float: right;
+    text-align: left;
+    width: 50%;
+}
