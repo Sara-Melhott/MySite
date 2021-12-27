@@ -65,7 +65,9 @@ public partial class Registration : System.Web.UI.Page
             {
                 reader.Read();
                 id_player = (int)reader.GetValue(0);
-                Response.Redirect("Default.aspx?value=" + id_player);
+                Session["id_player"] = id_player;
+                Session["Aut"] = true;
+                Response.Redirect("Default.aspx");
             }
             sConn.Close();
         }

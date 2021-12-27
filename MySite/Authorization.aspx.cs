@@ -15,7 +15,7 @@ public partial class Authorization : System.Web.UI.Page
     SqlDataAdapter sAdapter;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Session["Aut"] = false;
     }
 
     protected void authorizationButton_Click(object sender, EventArgs e)
@@ -44,8 +44,9 @@ public partial class Authorization : System.Web.UI.Page
             {
                 reader.Read();
                 id_player = (int)reader.GetValue(0);
-                Session["Value"] = id_player;
+                Session["id_player"] = id_player;
                 Session["Name"] = reader.GetValue(1);
+                Session["Aut"] = true;
                 Response.Redirect("Default.aspx");
             }
                 

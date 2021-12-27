@@ -89,7 +89,7 @@ div.TableErrors {
 }
 div.Table {
     position: relative;
-    top: 25px;
+    top: 20px;
     border-collapse: collapse;
     border-width: 0px;
     display: table;
@@ -97,7 +97,7 @@ div.Table {
     text-align: center;
     line-height: 2em;
     width: 100%;
-    left: 0px;
+    left: -1px;
 }
 div.TableRow {
     display: table-row;
@@ -109,6 +109,13 @@ div.TableLeftCol {
     width: 49.5%;
 }
 div.TableRightCol {
+
+    float: right;
+    text-align: left;
+    width: 50%;
+}
+div.TableRightColForGame {
+    left: 10%;
     float: right;
     text-align: left;
     width: 50%;

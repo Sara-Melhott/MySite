@@ -5,13 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class _Default : System.Web.UI.Page
+public partial class Battle2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!(bool)Session["Aut"])
-            Response.Redirect("Error.aspx");
-        Label2.Text = Session["id_player"].ToString();
-          
+
     }
 }
