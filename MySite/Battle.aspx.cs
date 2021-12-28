@@ -16,23 +16,13 @@ public partial class Battle : Page
     List<Frog> frogs = new List<Frog>();
     Time time = new Time();
     string endOfGameFrogTime = null;
-    enum buttonState
-    {
-        FEED,
-        BATTLE,
-        WORK
-    }
-    buttonState stateOfGame;
     Frog newFrog = new Frog();
-    //System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
             id_player = (int)Session["id_player"];
             Label1.Text = Session["id_player"].ToString();
-            ButtonNo.Visible = false;
-            ButtonYes.Visible = false;
             //Заполнение списка жабок
             string connectionString = ConfigurationManager.ConnectionStrings["GameContext"].ConnectionString;
             //Подключение к БД
@@ -61,7 +51,7 @@ public partial class Battle : Page
                         else
                             var10 = (string)reader.GetValue(10);
 
-                        Frog frog = new Frog((int)reader.GetValue(1), (string)reader.GetValue(2), (int)reader.GetValue(3),
+                        Frog frog = new Frog((int)reader.GetValue(0), (int)reader.GetValue(1), (string)reader.GetValue(2), (int)reader.GetValue(3),
                             (int)reader.GetValue(4), (int)reader.GetValue(5), (double)reader.GetValue(6), (int)reader.GetValue(7),
                             var8, var9, var10);
                         frogs.Add(frog);
@@ -77,7 +67,7 @@ public partial class Battle : Page
             {
                 DropDownList1.SelectedIndex = 0;
                 DropDownList1.Visible = false;
-                Label3.Text = "У вас нет жабок. Нажмите кнопку 'Получить жабку'.";
+                Label3.Text = "У вас нет жабок.<br/> Перейдите в Your Frog, чтобы получит жабку.";
             }
             else
             {
@@ -85,6 +75,8 @@ public partial class Battle : Page
                 DropDownList1.SelectedIndex = 0;
                 UpdateTextInfoAboutFrog();
             }
+            Timer1.Enabled = false;
+            DateTimeNextLabel.Text = "";
         }
         else
         {
@@ -97,13 +89,20 @@ public partial class Battle : Page
         }
     }
 
-    protected void DropDownList1_SelectedIndexChanged1(object sender, EventArgs e)
-    {
-        UpdateTextInfoAboutFrog();
-    }
     private void UpdateTextInfoAboutFrog()
     {
-        if (DropDownList1.Visible)
+        if (frogs.Count == 0)
+        {
+            LevelFrogLabel.Text = "";
+            PowerLevelFrogLabel.Text = "";
+            AgilityLevelFrogLabel.Text = "";
+            IntelligenceLevelFrogLabel.Text = "";
+            PowerPointFrogLabel.Text = "";
+            AgilityPointFrogLabel.Text = "";
+            IntelligencePointFrogLabel.Text = "";
+            luckFrogLabel.Text = "";
+        }
+        else
         {
             int frogNumberInTheList = DropDownList1.SelectedIndex;
             LevelFrogLabel.Text = "Уровень: " + String.Format("{0:d}", frogs.ElementAt(frogNumberInTheList).Level);
@@ -114,7 +113,8 @@ public partial class Battle : Page
             AgilityPointFrogLabel.Text = "Очки ловкоси: " + String.Format("{0:d}", frogs.ElementAt(frogNumberInTheList).Agility_point);
             IntelligencePointFrogLabel.Text = "Очки интеллекта: " + String.Format("{0:d}", frogs.ElementAt(frogNumberInTheList).Intelligence_points);
             luckFrogLabel.Text = "Удача: " + String.Format("{0:f1}", frogs.ElementAt(frogNumberInTheList).Luck);
-        }
+
+        }       
     }
 
     private void UpdateComboBox()
@@ -124,12 +124,6 @@ public partial class Battle : Page
         {
             DropDownList1.Items.Add(frogs[i].Name);
         }
-        /*if (numberOfFrogs >= 1) DropDownList1.Items.Add(frogs[0].Name);
-        else DropDownList1.Items.Add("");
-        if (numberOfFrogs >= 2) NameFrog2.Text = frogs.ElementAtOrDefault(1).Name;
-        else NameFrog2.Text = "";
-        if (numberOfFrogs == 3) NameFrog3.Text = frogs.ElementAtOrDefault(2).Name;
-        else NameFrog3.Text = "";*/
     }
     /// <summary>
     /// Изменение выбора игровой жабки
@@ -139,122 +133,10 @@ public partial class Battle : Page
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
         UpdateTextInfoAboutFrog();
+        Timer1.Enabled = false;
+        DateTimeNextLabel.Text = "";
     }
 
-    protected void ButtonRemoveFrog_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void ButtonGetFrog_Click(object sender, EventArgs e)
-    {
-        if (numberOfFrogs < 3)
-        {
-            Random rnd = new Random();
-            int level = rnd.Next(1, 4);
-            string str = null;
-            newFrog = new Frog(level);
-            TypeOfGameLabel.Text = "Нравится жабка?";
-            //EnemyName.Visibility = Visibility.Visible;
-            string connectionString = ConfigurationManager.ConnectionStrings["GameContext"].ConnectionString;
-            using (SqlConnection sConn = new SqlConnection(connectionString))
-            {
-                sConn.Open();
-                while (true)
-                {
-                    int number = rnd.Next(1, 1000);
-                    str = "Frog" + String.Format("{0:d}", number);
-                    SqlCommand command = new SqlCommand("SELECT * FROM Frogs WHERE Name = '" + str + "'", sConn);
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (!reader.HasRows)
-                    {
-                        EnemyNameLabel.Text = str;
-                        newFrog.Name = str;
-                        break;
-                    }
-                    reader.Close();
-                }
-                sConn.Close();
-            }
-            EnemyNameLabel.Text += "<br/>" + "\nУровень: " + String.Format("{0:d}", newFrog.Level) + "<br/>"+ 
-                "\nСила: " + String.Format("{0:d}", newFrog.levelOfPoints("power")) + "<br/>" +
-                "\nЛовкость: " + String.Format("{0:d}", newFrog.levelOfPoints("agility")) + "<br/>" +
-                "\nИнтеллект: " + String.Format("{0:d}", newFrog.levelOfPoints("intelligence")) + "<br/>"+
-                "\nУдача: " + String.Format("{0:f1}", newFrog.Luck);
-            ButtonNo.Visible = true;
-            ButtonYes.Visible = true;
-            Session["NewFrog"] = newFrog;
-        }
-        else
-        {
-            NewNextFrogTimeLabel.Text = "У вас слишком много жабок!";
-        }
-
-    }
-    /// <summary>
-    /// Кнопка сохрнения жабки
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    protected void ButtonYes_Click(object sender, EventArgs e)
-    {
-        newFrog.ID_Player = id_player;
-        string connectionString = ConfigurationManager.ConnectionStrings["GameContext"].ConnectionString;
-        //Подключение к БД
-        using (SqlConnection sConn = new SqlConnection(connectionString))
-        {
-            sConn.Open();
-            string sqlExpression = "INSERT INTO Frogs (Id_Player, Name, Power_point, Agility_point," +
-                " Intelligence_points, Luck, Level, BattleTime, FeedingTime, WorkTime) VALUES ('" + 
-                id_player + "', '" + newFrog.Name + "', '" + newFrog.Power_point + "', '" +
-                newFrog.Agility_point + "', '" + newFrog.Intelligence_points + "', @Luck, '" + newFrog.Level + "', " +
-                "@DbNull, @DbNull, @DbNull)";
-            SqlCommand command = new SqlCommand(sqlExpression, sConn);
-            command.Parameters.AddWithValue("@Luck", newFrog.Luck);
-            command.Parameters.AddWithValue("@DbNull", DBNull.Value);
-            int number = command.ExecuteNonQuery();
-            //sqlExpression = "UPDATE Frogs";
-            //command.ExecuteNonQuery();
-
-            //SqlDataAdapter adapter = new SqlDataAdapter();
-
-            frogs.Add(newFrog);
-            Session["ListFrog"] = frogs;
-            numberOfFrogs++;
-            
-            UpdateComboBox();
-            DropDownList1.Visible = true;
-            DropDownList1.SelectedIndex = 0;
-            UpdateTextInfoAboutFrog();
-
-            sConn.Close();
-        }
-
-        TypeOfGameLabel.Text = "Битва";
-        ButtonNo.Visible = false;
-        ButtonYes.Visible = false;
-        EnemyNameLabel.Text = "";
-        if (numberOfFrogs < 3)
-            NewNextFrogTimeLabel.Text = "Вы можете получить жабку!";
-        else
-            NewNextFrogTimeLabel.Text = "У вас слишком много жабок!";
-    }
-    /// <summary>
-    /// Кнопка отказа от жабки
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    protected void ButtonNo_Click(object sender, EventArgs e)
-    {
-        TypeOfGameLabel.Text = "Битва";
-        ButtonNo.Visible = false;
-        ButtonYes.Visible = false;
-        EnemyNameLabel.Text = "";
-        if (numberOfFrogs < 3)
-            NewNextFrogTimeLabel.Text = "Вы можете получить жабку!";
-        else
-            NewNextFrogTimeLabel.Text = "У вас слишком много жабок!";
-    }
     /// <summary>
     /// Кнопка начала битвы жабок
     /// </summary>
@@ -262,6 +144,74 @@ public partial class Battle : Page
     /// <param name="e"></param>
     protected void ButtonBattle_Click(object sender, EventArgs e)
     {
+        bool waiting = false;
+        if (frogs.Count == 0) return;
+        Frog frog = frogs.ElementAtOrDefault(DropDownList1.SelectedIndex);
+        string connectionString = ConfigurationManager.ConnectionStrings["GameContext"].ConnectionString;
+        using (SqlConnection sConn = new SqlConnection(connectionString))
+        {
+            sConn.Open();
+            int power_points = frog.Power_point;
+            waiting = time.iswaitTime(frog.BattleTime);
+            if (!waiting)
+            {
+                Timer1.Enabled = false;
+                DateTimeNextLabel.Text = "";
+                MyLibrary.Battle buttle = new MyLibrary.Battle(frog);
+                if (buttle.IsWin())
+                {
+                    power_points += buttle.ButtleWinPoints(frog);
+                    frog.updateLevel();
+                    string sqlExpression = "UPDATE Frogs SET Level="+ frog.Level + " WHERE Id='"+ frog.ID + "'";
+                    SqlCommand command = new SqlCommand(sqlExpression, sConn);
+                    int number2 = command.ExecuteNonQuery();
+                    EnemyNameLabel.Text  = "Поздравляем, Вы победили!\nВы получаете " + String.Format("{0:d}", buttle.ButtleWinPoints(frog) + " очков к силе.");
+                    frogs.ElementAtOrDefault(DropDownList1.SelectedIndex).Power_point = power_points;
+                    frogs.ElementAtOrDefault(DropDownList1.SelectedIndex).Level = frog.Level;
+                    UpdateTextInfoAboutFrog();
+                }
+                else
+                {
+                    EnemyNameLabel.Text = "Вы проиграли.";
+                }
 
+                LevelFrogLabel.Text = "Уровень: " + String.Format("{0:d}", frog.Level);
+                PowerLevelFrogLabel.Text = "Сила: " + String.Format("{0:d}", buttle.MyFrog.levelOfPoints("power"));
+                PowerPointFrogLabel.Text = "Очки силы: " + String.Format("{0:d}", power_points);
+                EnemyNameLabel.Text = "Ваш враг<br/>" + "Уровень: " + String.Format("{0:d}", buttle.Enemy.Level) +
+                    "<br/>Сила: " + String.Format("{0:d}", buttle.Enemy.levelOfPoints("power")) +
+                    "<br/>Ловкость: " + String.Format("{0:d}", buttle.Enemy.levelOfPoints("agility")) +
+                    "<br/>Интеллект: " + String.Format("{0:d}", buttle.Enemy.levelOfPoints("intelligence")) +
+                    "<br/>Удача: " + String.Format("{0:f1}", buttle.Enemy.Luck);
+
+                frogs.ElementAtOrDefault(DropDownList1.SelectedIndex).BattleTime = DateTime.Now.Add(buttle.wait_time).ToString();
+                Session["ListFrog"] = frogs;
+                string sqlExpression2 = "UPDATE Frogs SET BattleTime='" + frog.BattleTime + "' WHERE Id='" + frog.ID + "'";
+                SqlCommand command2 = new SqlCommand(sqlExpression2, sConn);
+                int number = command2.ExecuteNonQuery();
+                //db.Database.ExecuteSqlCommand("UPDATE Frogs SET BattleTime={0} WHERE ID={1}", frogs.ElementAtOrDefault(frogNumberInTheList).BattleTime, frog.ID);
+                sConn.Close();
+            }
+        }
+        if (waiting)
+        {
+            EnemyNameLabel.Text = "Привет!\nЗдесь ты можешь отправить свою\nжабку драться с другой жабкой.\nТы будешь развивать навык силы!\n" +
+           "Нажми на кнопку Битва.";
+
+            endOfGameFrogTime = frog.BattleTime;
+            WinTextLabel.Text = "Eще слишком рано.\nДайте вашей жабке отдохнуть! ";
+            Timer1.Interval = 1000;
+            Timer1.Enabled = true;
+            //dispatcherTimer.Tick += dispatcherTimer_Tick;
+            //dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            //dispatcherTimer.Start();
+        }
+    }
+
+    protected void Timer1_Tick(object sender, EventArgs e)
+    {
+        frogs = (List<Frog>)Session["ListFrog"];
+        endOfGameFrogTime = frogs[DropDownList1.SelectedIndex].BattleTime;
+        DateTimeNextLabel.Text = DateTime.Parse(endOfGameFrogTime).Subtract(DateTime.Now).ToString(@"hh\:mm\:ss");
     }
 }

@@ -24,10 +24,11 @@ namespace MyLibrary
 
         }
 
-        public Frog(int id_player, string name, int power_point, int agility_point,
+        public Frog(int id, int id_player, string name, int power_point, int agility_point,
             int intelligence_point, double luck, int level, string battle_time, string feeding_time,
             string work_time)
         {
+            ID = id;
             ID_Player = id_player;
             Name = name;
             Power_point = power_point;

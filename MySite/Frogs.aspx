@@ -1,4 +1,4 @@
-﻿<%@Page Language="C#" AutoEventWireup="true" CodeFile="Battle.aspx.cs" Inherits="Battle" MasterPageFile="~/Site.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Frogs.aspx.cs" Inherits="Frogs" MasterPageFile="~/Site.master"%>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div class="Table">
@@ -32,37 +32,28 @@
                 <div>
                     <asp:Label ID="luckFrogLabel" runat="server" ></asp:Label>
                 </div>
+                <div>
+                    <asp:Label ID="NewNextFrogTimeLabel" runat="server" Text="Вы можете получить жабку!" Margin="0 150 0 0" FontSize="15" Width="200" Height="30"></asp:Label>
+                </div>
+                <div>
+                    <asp:Button ID="ButtonRemoveFrog" runat="server" Text="Удалить жабку" Width="190"  Margin="0 340 0 0" OnClick="ButtonRemoveFrog_Click"/>
+                </div>
+                <div>
+                    <asp:Button ID="ButtonGetFrog" runat="server" Text="Получить жабку" Width="190" Margin="0 300 0 10" OnClick="ButtonGetFrog_Click"/>
+                </div>
             </div>
              <div class="TableRightCol">
                 <div>
-                    <asp:Label ID="TypeOfGameLabel" runat="server" Text="Битва" FontSize="25" Width="200"></asp:Label>
+                    <asp:Label ID="TypeOfGameLabel" runat="server" Text="Здесь ты можешь отпустить жабку или взять новую" FontSize="25" Width="200"></asp:Label>
                 </div>
                  <div>
                      <asp:Label ID="EnemyNameLabel" runat="server" Text="" MaximumSize ="150"></asp:Label>
                  </div>
                  <div>
-                     <asp:Label ID="WinTextLabel" runat="server" ></asp:Label>
-                 </div>
-                 <div>
-                     
-                     <asp:ScriptManager ID="ScriptManager1" runat="server">
-                     </asp:ScriptManager>
-                         <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick"></asp:Timer>
-                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                         <ContentTemplate>
-                             <asp:Label ID="DateTimeNextLabel" runat="server" ></asp:Label>
-                         </ContentTemplate>
-                         <Triggers>
-                             <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
-                         </Triggers>
-                     </asp:UpdatePanel>
-                     
-                 </div>
-                 <div>
-                     <asp:Button ID="ButtonBattle" runat="server" Text="Битва" Width="190" BackColor="#c49000" OnClick="ButtonBattle_Click"/>
+                     <asp:Button ID="ButtonYes" runat="server" Text="Да" Margin="50 350 0 0" Width="100" Height="30" BackColor="#fbc02d" OnClick="ButtonYes_Click"/>
+                     <asp:Button ID="ButtonNo" runat="server" Text="Нет" Margin="0 350 50 0" Width="100" Height="30" BackColor="#fbc02d" OnClick="ButtonNo_Click"/>
                  </div>
             </div>
          </div>   
      </div>
 </asp:Content>
-
