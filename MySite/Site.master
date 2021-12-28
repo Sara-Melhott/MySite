@@ -13,9 +13,7 @@
         <div class="appTitle">
             <asp:Literal ID="AppTitleLiteral" runat="server" Text="Давай играть, "></asp:Literal>
         </div>
-        <div class="siteMapPath">
-            <asp:SiteMapPath ID="MainSiteMapPath" runat="server" />
-        </div>
+        
         <div class="menu">
             <asp:Menu ID="MainMenu" DataSourceID="MainSiteMapDataSource" Orientation="Horizontal" StaticEnableDefaultPopOutImage="false" runat="server">
                 <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />

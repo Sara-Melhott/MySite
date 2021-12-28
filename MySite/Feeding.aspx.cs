@@ -22,7 +22,6 @@ public partial class Feeding : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             id_player = (int)Session["id_player"];
-            Label1.Text = Session["id_player"].ToString();
             //Заполнение списка жабок
             string connectionString = ConfigurationManager.ConnectionStrings["GameContext"].ConnectionString;
             //Подключение к БД
@@ -59,7 +58,8 @@ public partial class Feeding : System.Web.UI.Page
                         Session["ListFrog"] = frogs;
                     }
                 }
-
+                EnemyNameLabel.Text = "Привет!<br/>Здесь ты можешь отправить свою<br/>жабку на озеро ловить себе еду.<br/>Ты будешь развивать навык ловкости!<br/>" +
+           "Нажми на кнопку покормить.";
 
                 sConn.Close();
             }
@@ -67,7 +67,7 @@ public partial class Feeding : System.Web.UI.Page
             {
                 DropDownList1.SelectedIndex = 0;
                 DropDownList1.Visible = false;
-                Label3.Text = "У вас нет жабок.<br/> Перейдите в Your Frog, чтобы получит жабку.";
+                Label3.Text = "У вас нет жабок.<br/>Перейдите в Ваши жабки, чтобы получит жабку.";
             }
             else
             {
@@ -135,6 +135,7 @@ public partial class Feeding : System.Web.UI.Page
         UpdateTextInfoAboutFrog();
         Timer1.Enabled = false;
         DateTimeNextLabel.Text = "";
+        WinTextLabel.Text = "";
     }
     
     /// <summary>
@@ -192,7 +193,7 @@ public partial class Feeding : System.Web.UI.Page
         }
         if (waiting)
         {
-            EnemyNameLabel.Text = "Привет!\nЗдесь ты можешь отправить свою\nжабку на озеро ловить себе еду.\nТы будешь развивать навык ловкости!\n" +
+            EnemyNameLabel.Text = "Привет!<br/>Здесь ты можешь отправить свою<br/>жабку на озеро ловить себе еду.<br/>Ты будешь развивать навык ловкости!<br/>" +
            "Нажми на кнопку покормить.";
 
             endOfGameFrogTime = frog.FeedingTime;

@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AutReg.master.cs" Inherits="AutReg" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="template">
+    <form id="form1" runat="server">
+    <div class="appTitle">
+            <asp:Literal ID="AppTitleLiteral" runat="server" Text="Игра про Жабок"></asp:Literal>
+        </div>
+        <div class="content">
+            <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

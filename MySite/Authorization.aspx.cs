@@ -10,18 +10,11 @@ using System.Configuration;
 
 public partial class Authorization : System.Web.UI.Page
 {
-    string dbName = "DataBase.db";
-    SqlConnection sConn;
-    SqlDataAdapter sAdapter;
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["Aut"] = false;
     }
 
-    protected void authorizationButton_Click(object sender, EventArgs e)
-    {
-        
-    }
     /// <summary>
     /// Ауэнтотификация
     /// </summary>
@@ -34,7 +27,7 @@ public partial class Authorization : System.Web.UI.Page
         int id_player;
         string connectionString = ConfigurationManager.ConnectionStrings["GameContext"].ConnectionString;
         //Подключение к БД
-        using (sConn = new SqlConnection(connectionString)) {
+        using (SqlConnection sConn = new SqlConnection(connectionString)) {
             sConn.Open();
             SqlCommand command = new SqlCommand("SELECT * FROM Players WHERE Login = '" + login + "' AND " +
                 "Password = '" + password + "'", sConn);

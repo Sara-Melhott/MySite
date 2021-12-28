@@ -3,7 +3,21 @@
     padding-right: 8px;
     font-family: Tahoma, Arial, sans-serif;
     font-size: 75%;
-    color: #666666;
+    color: black;
+    background: #00FF7F;
+}
+td.auto-style1 {
+    width: 279px;
+}
+
+td.auto-style2 {
+    width: 151px;
+}
+
+table.aut {
+    border: 2px solid black; /* Рамка вокруг таблицы */
+    background: #98FB98; /* Цвет фона таблицы */
+    border-collapse: collapse;
 }
 div.appTitle {
     position: fixed;
@@ -13,12 +27,13 @@ div.appTitle {
     margin-right: 10px;
     font-size: 2.2em;
     font-family: Trebuchet MS, Arial, sans-serif;
-    color: #888888;
+    color: #2F4F4F;
+    background: #2E8B57;
     font-variant: small-caps;
     width: 97%;
 }
 div.hideSkiplink {
-    background-color: #3a4f63;
+    background-color: red;
     width: 100%;
 }
 div.menu {
@@ -36,9 +51,9 @@ div.menu ul {
 }
 
 div.menu ul li a, div.menu ul li a:visited {
-    background-color: #465c71;
+    background-color: #ADFF2F;
     border: 1px #4e667d solid;
-    color: #dde4ec;
+    color: black;
     display: block;
     line-height: 1.35em;
     padding: 4px 20px;
@@ -76,16 +91,71 @@ div.xxx{
 }
 div.login {
     position: relative;
-    
+    font-size: 20px;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+}
+div.forgame {
+    font-size: 15px;
 }
 div.TableErrors {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center
+}
+div.RegTable {
+    background: #98FB98; /* Цвет фона таблицы */
+    border-collapse: collapse;
+    position: relative;
+    top: 20px;
+    border: 2px solid black;
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    line-height: 2em;
+    width: 500px;
+    left: -1px;
+}
+div.GameTable {
+    font-size: 15px;
+    background: #98FB98; /* Цвет фона таблицы */
+    border-collapse: collapse;
+    position: relative;
+    top: 20px;
+    border: 2px solid black;
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    line-height: 2em;
+    width: 500px;
+    left: -1px;
+    
+}
+div.GameRowR {
+    border-right: 2px solid black;
+}
+div.GameRowL {
+    border-left: 2px solid black;
+}
+div.GameRow2 {
+    display: table-row;
+    border: 2px solid black;
+}
+div.GameRightCol {
+    float: right;
+    text-align: center;
+    width: 50%;
+}
+div.GameLeftCol {
+    float: left;
+    text-align: center;
+    width: 50%;
+}
+div.GameButton {
+    border-left: 2px solid black;
+    padding-top: .10%;
 }
 div.Table {
     position: relative;

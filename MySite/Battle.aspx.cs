@@ -22,7 +22,6 @@ public partial class Battle : Page
         if (!Page.IsPostBack)
         {
             id_player = (int)Session["id_player"];
-            Label1.Text = Session["id_player"].ToString();
             //Заполнение списка жабок
             string connectionString = ConfigurationManager.ConnectionStrings["GameContext"].ConnectionString;
             //Подключение к БД
@@ -59,15 +58,16 @@ public partial class Battle : Page
                         Session["ListFrog"] = frogs;
                     }
                 }
+                EnemyNameLabel.Text = "Привет!<br/>Здесь ты можешь отправить свою<br/>жабку драться с другой жабкой.<br/>" +
+                    "Ты будешь развивать навык силы!<br/>Нажми на кнопку Битва.";
 
-               
                 sConn.Close();
             }
             if (numberOfFrogs == 0)
             {
                 DropDownList1.SelectedIndex = 0;
                 DropDownList1.Visible = false;
-                Label3.Text = "У вас нет жабок.<br/> Перейдите в Your Frog, чтобы получит жабку.";
+                Label3.Text = "У вас нет жабок.<br/>Перейдите в Ваши жабки, чтобы получит жабку.";
             }
             else
             {
@@ -135,6 +135,7 @@ public partial class Battle : Page
         UpdateTextInfoAboutFrog();
         Timer1.Enabled = false;
         DateTimeNextLabel.Text = "";
+        WinTextLabel.Text = "";
     }
 
     /// <summary>
@@ -165,14 +166,14 @@ public partial class Battle : Page
                     string sqlExpression = "UPDATE Frogs SET Level="+ frog.Level + " WHERE Id='"+ frog.ID + "'";
                     SqlCommand command = new SqlCommand(sqlExpression, sConn);
                     int number2 = command.ExecuteNonQuery();
-                    EnemyNameLabel.Text  = "Поздравляем, Вы победили!\nВы получаете " + String.Format("{0:d}", buttle.ButtleWinPoints(frog) + " очков к силе.");
+                    EnemyNameLabel.Text  = "<br/>Поздравляем, Вы победили!\nВы получаете " + String.Format("{0:d}", buttle.ButtleWinPoints(frog) + " очков к силе.");
                     frogs.ElementAtOrDefault(DropDownList1.SelectedIndex).Power_point = power_points;
                     frogs.ElementAtOrDefault(DropDownList1.SelectedIndex).Level = frog.Level;
                     UpdateTextInfoAboutFrog();
                 }
                 else
                 {
-                    EnemyNameLabel.Text = "Вы проиграли.";
+                    EnemyNameLabel.Text = "<br/>Вы проиграли.";
                 }
 
                 LevelFrogLabel.Text = "Уровень: " + String.Format("{0:d}", frog.Level);
@@ -182,7 +183,7 @@ public partial class Battle : Page
                     "<br/>Сила: " + String.Format("{0:d}", buttle.Enemy.levelOfPoints("power")) +
                     "<br/>Ловкость: " + String.Format("{0:d}", buttle.Enemy.levelOfPoints("agility")) +
                     "<br/>Интеллект: " + String.Format("{0:d}", buttle.Enemy.levelOfPoints("intelligence")) +
-                    "<br/>Удача: " + String.Format("{0:f1}", buttle.Enemy.Luck);
+                    "<br/>Удача: " + String.Format("{0:f1}", buttle.Enemy.Luck) + EnemyNameLabel.Text;
 
                 frogs.ElementAtOrDefault(DropDownList1.SelectedIndex).BattleTime = DateTime.Now.Add(buttle.wait_time).ToString();
                 Session["ListFrog"] = frogs;
@@ -195,16 +196,13 @@ public partial class Battle : Page
         }
         if (waiting)
         {
-            EnemyNameLabel.Text = "Привет!\nЗдесь ты можешь отправить свою\nжабку драться с другой жабкой.\nТы будешь развивать навык силы!\n" +
+            EnemyNameLabel.Text = "Привет!<br/>Здесь ты можешь отправить свою<br/>жабку драться с другой жабкой.<br/>Ты будешь развивать навык силы!<br/>" +
            "Нажми на кнопку Битва.";
 
             endOfGameFrogTime = frog.BattleTime;
             WinTextLabel.Text = "Eще слишком рано.\nДайте вашей жабке отдохнуть! ";
             Timer1.Interval = 1000;
             Timer1.Enabled = true;
-            //dispatcherTimer.Tick += dispatcherTimer_Tick;
-            //dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            //dispatcherTimer.Start();
         }
     }
 

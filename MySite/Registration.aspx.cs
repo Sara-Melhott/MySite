@@ -12,7 +12,7 @@ public partial class Registration : System.Web.UI.Page
     SqlConnection sConn;
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        Session["Aut"] = false;
     }
     /// <summary>
     /// Кнопка назад
@@ -21,8 +21,6 @@ public partial class Registration : System.Web.UI.Page
     /// <param name="e"></param>
     protected void CustomerCancelButton_Click(object sender, EventArgs e)
     {
-        if (!Page.IsValid)
-            Response.Redirect("Authorization.aspx");
         Response.Redirect("Authorization.aspx");
     }
     /// <summary>

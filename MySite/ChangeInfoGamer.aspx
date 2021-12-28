@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Registration.aspx.cs" Inherits="Registration" MasterPageFile="~/AutReg.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ChangeInfoGamer.aspx.cs" Inherits="ChangeInfoGamer" MasterPageFile="~/Site.master" %>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div class="login">
@@ -46,8 +46,7 @@
             <div class="TableErrors">
                 <asp:ValidationSummary ID="CustomerValidationSummary" runat="server"></asp:ValidationSummary>
             </div>
-            <asp:Button ID="CustomerInsertButton" runat="server" Text="Зарегистрироваться" OnClick="CustomerInsertButton_Click" BackColor="YellowGreen"/>
-            &nbsp;<asp:Button ID="CustomerCancelButton" runat="server" Text="Назад" OnClick="CustomerCancelButton_Click" CausesValidation="false" BackColor="YellowGreen"/>
+            <asp:Button ID="CustomerInsertButton" runat="server" Text="Сохранить" OnClick="CustomerInsertButton_Click" BackColor="YellowGreen"/>
         </div>
     </div>
     </div>

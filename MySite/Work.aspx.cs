@@ -22,7 +22,6 @@ public partial class Work : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             id_player = (int)Session["id_player"];
-            Label1.Text = Session["id_player"].ToString();
             //Заполнение списка жабок
             string connectionString = ConfigurationManager.ConnectionStrings["GameContext"].ConnectionString;
             //Подключение к БД
@@ -59,7 +58,8 @@ public partial class Work : System.Web.UI.Page
                         Session["ListFrog"] = frogs;
                     }
                 }
-
+                EnemyNameLabel.Text = "Привет!<br/>Здесь ты можешь отправить свою<br/>жабку на 4, 8 или 12 часов работать.<br/>Ты будешь развивать навык интеллекта!<br/>" +
+            "Выбери время, на сколько хочешь<br/>отправить свою жабку и нажми<br/>соотвествующую кнопку.";
 
                 sConn.Close();
             }
@@ -67,7 +67,7 @@ public partial class Work : System.Web.UI.Page
             {
                 DropDownList1.SelectedIndex = 0;
                 DropDownList1.Visible = false;
-                Label3.Text = "У вас нет жабок.<br/> Перейдите в Your Frog, чтобы получит жабку.";
+                Label3.Text = "У вас нет жабок.<br/>Перейдите в Ваши жабки, чтобы получит жабку.";
             }
             else
             {
@@ -135,6 +135,7 @@ public partial class Work : System.Web.UI.Page
         UpdateTextInfoAboutFrog();
         Timer1.Enabled = false;
         DateTimeNextLabel.Text = "";
+        WinTextLabel.Text = "";
     }
     protected void Timer1_Tick(object sender, EventArgs e)
     {
@@ -145,7 +146,6 @@ public partial class Work : System.Web.UI.Page
 
     protected void ButtonWork4_Click(object sender, EventArgs e)
     {
-        EnemyNameLabel.Text = "";
         bool waiting = false;
         if (frogs.Count == 0) return;
         Frog frog = frogs.ElementAtOrDefault(DropDownList1.SelectedIndex);
@@ -194,7 +194,6 @@ public partial class Work : System.Web.UI.Page
 
     protected void ButtonWork8_Click(object sender, EventArgs e)
     {
-        EnemyNameLabel.Text = "";
         bool waiting = false;
         if (frogs.Count == 0) return;
         Frog frog = frogs.ElementAtOrDefault(DropDownList1.SelectedIndex);
@@ -243,7 +242,6 @@ public partial class Work : System.Web.UI.Page
 
     protected void ButtonWork12_Click(object sender, EventArgs e)
     {
-        EnemyNameLabel.Text = "";
         bool waiting = false;
         if (frogs.Count == 0) return;
         Frog frog = frogs.ElementAtOrDefault(DropDownList1.SelectedIndex);

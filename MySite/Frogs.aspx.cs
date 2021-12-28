@@ -22,7 +22,6 @@ public partial class Frogs : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             id_player = (int)Session["id_player"];
-            Label1.Text = Session["id_player"].ToString();
             ButtonNo.Visible = false;
             ButtonYes.Visible = false;
             //Заполнение списка жабок
@@ -137,6 +136,7 @@ public partial class Frogs : System.Web.UI.Page
 
     protected void ButtonRemoveFrog_Click(object sender, EventArgs e)
     {
+        if (frogs.Count > 0)
         try
         {
             string connectionString = ConfigurationManager.ConnectionStrings["GameContext"].ConnectionString;
@@ -275,7 +275,7 @@ public partial class Frogs : System.Web.UI.Page
     /// <param name="e"></param>
     protected void ButtonNo_Click(object sender, EventArgs e)
     {
-        TypeOfGameLabel.Text = "Битва";
+        TypeOfGameLabel.Text = "Здесь ты можешь отпустить жабку или взять новую!";
         ButtonNo.Visible = false;
         ButtonYes.Visible = false;
         EnemyNameLabel.Text = "";
