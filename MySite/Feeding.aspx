@@ -4,46 +4,43 @@
     <div class="login">
     <div class="GameTable">
         <div class="GameRow2">
-            <asp:Label ID="Label2" runat="server" Text="Здесь будут драки!"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="Здесь можно искать еду!"></asp:Label>
          </div>
         <div class="TableRow">
             <div class="GameLeftCol">
-                <div>
+                <div class="GameRowR">
                     <asp:Label ID="Label3" runat="server" Text="Выберите жабку"></asp:Label>
                 </div>
-                <div>
+                <div class="GameRowR">
                     <asp:DropDownList ID="DropDownList1" runat="server" BackColor="YellowGreen" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
                 </div>
-                <div>
+                <div class="GameRowR">
                     <asp:Label ID="LevelFrogLabel" runat="server" Margin="20 80 0 80" Width="200" Height="25" FontSize="14"></asp:Label>
                 </div>
-                <div>
+                <div class="GameRowR">
                     <asp:Label ID="PowerLevelFrogLabel" runat="server" Margin="20 140 10 0" Width="165" Height="25" FontSize="14"></asp:Label>
                     <asp:Label ID="PowerPointFrogLabel" runat="server" Margin="20 140 10 0" Width="165" Height="25" FontSize="14"></asp:Label>
                 </div>
-                <div>
+                <div class="GameRowR">
                     <asp:Label ID="AgilityLevelFrogLabel" runat="server" Margin="20 140 10 0" Width="165" Height="25" FontSize="14"></asp:Label>
                     <asp:Label ID="AgilityPointFrogLabel" runat="server" Margin="20 140 10 0" Width="165" Height="25" FontSize="14"></asp:Label>
                 </div>
-                <div>
+                <div class="GameRowR">
                     <asp:Label ID="IntelligenceLevelFrogLabel" runat="server" Margin="20 140 10 0" Width="165" Height="25" FontSize="14"></asp:Label>
                     <asp:Label ID="IntelligencePointFrogLabel" runat="server" Margin="20 140 10 0" Width="165" Height="25" FontSize="14"></asp:Label>
                 </div>
-                <div>
+                <div class="GameRowR">
                     <asp:Label ID="luckFrogLabel" runat="server" ></asp:Label>
                 </div>
             </div>
              <div class="GameRightCol">
-                <div class="GameRowL">
-                    <asp:Label ID="TypeOfGameLabel" runat="server" Text="Битва" FontSize="25" Width="200"></asp:Label>
-                </div>
-                 <div class="GameRowL">
+                 <div>
                      <asp:Label ID="EnemyNameLabel" runat="server" Text="" MaximumSize ="150" Height="150"></asp:Label>
                  </div>
-                 <div class="GameRowL">
+                 <div>
                      <asp:Label ID="WinTextLabel" runat="server" Height="30"></asp:Label>
                  </div>
-                 <div class="GameRowL">
+                 <div>
                      
                      <asp:ScriptManager ID="ScriptManager1" runat="server">
                      </asp:ScriptManager>
@@ -58,7 +55,7 @@
                      </asp:UpdatePanel>
                      
                  </div>
-                 <div class="GameButton">
+                 <div>
                      <asp:Button ID="ButtonFeeding" runat="server" Text="Отправить искать еду" Width="190" BackColor="#c49000" OnClick="ButtonFeeding_Click" />
                  </div>
             </div>

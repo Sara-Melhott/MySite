@@ -31,15 +31,6 @@
             </div>
         </div>
         <div class="TableRow">
-            <div class="TableLeftCol">
-                <asp:Label ID="PasswordLabel2" runat="server" Text="Введите пароль еще раз:"></asp:Label>
-            </div>
-            <div class="TableRightCol">
-                <asp:TextBox ID="PasswordTextBox2" runat="server" MaxLength="10"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="PasswordTextBox2" runat="server" ErrorMessage="The Password must be filled in." Text="*"></asp:RequiredFieldValidator>
-            </div>
-        </div>
-        <div class="TableRow">
             <asp:Label ID="ErrorPassword" runat="server"></asp:Label>
         </div>
         <div class="TableRow">

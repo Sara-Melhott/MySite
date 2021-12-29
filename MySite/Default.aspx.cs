@@ -11,7 +11,5 @@ public partial class _Default : System.Web.UI.Page
     {
         if (!(bool)Session["Aut"])
             Response.Redirect("Error.aspx");
-        Label2.Text = Session["id_player"].ToString();
-          
     }
 }

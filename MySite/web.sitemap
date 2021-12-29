@@ -2,14 +2,13 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true">
   <siteMapNode url="~/Default.aspx" title="Welcome!"  description="Welcome to my game!" roles="*">
 	  <siteMapNode title="Игра">
-		  <siteMapNode url="~/Frogs.aspx" title="Твои жабки"  description="" />
+		  <siteMapNode url="~/Frogs.aspx" title="Ваши жабки"  description="" />
 		  <siteMapNode url="~/Battle.aspx" title="Битва"  description="" />
 		  <siteMapNode url="~/Feeding.aspx" title="Поиск еды"  description="" />
 		  <siteMapNode url="~/Work.aspx" title="Работа"  description="" />
 	  </siteMapNode>
-	  <siteMapNode url="" title="Помощь"  description="" />
 	  <siteMapNode title="Профиль">
-		  <siteMapNode url="" title="Изменить"  description="" />
+		  <siteMapNode url="~/ChangeInfoGamer.aspx" title="Изменить"  description="" />
 		  <siteMapNode url="~/Authorization.aspx" title="Выйти"  description="" />
 	  </siteMapNode>
   </siteMapNode>

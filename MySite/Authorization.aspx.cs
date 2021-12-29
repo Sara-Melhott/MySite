@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Configuration;
+using MyLibrary;
 
 public partial class Authorization : System.Web.UI.Page
 {
@@ -25,6 +26,7 @@ public partial class Authorization : System.Web.UI.Page
         string login = Login1.UserName;
         string password = Login1.Password;
         int id_player;
+        Player player;
         string connectionString = ConfigurationManager.ConnectionStrings["GameContext"].ConnectionString;
         //Подключение к БД
         using (SqlConnection sConn = new SqlConnection(connectionString)) {
@@ -37,9 +39,11 @@ public partial class Authorization : System.Web.UI.Page
             {
                 reader.Read();
                 id_player = (int)reader.GetValue(0);
-                Session["id_player"] = id_player;
-                Session["Name"] = reader.GetValue(1);
+                //Session["id_player"] = id_player;
+                //Session["Name"] = reader.GetValue(1);
                 Session["Aut"] = true;
+                player = new Player((int)reader.GetValue(0), (string)reader.GetValue(1), (string)reader.GetValue(2), (string)reader.GetValue(3));
+                Session["Player"] = player;
                 Response.Redirect("Default.aspx");
             }
                 

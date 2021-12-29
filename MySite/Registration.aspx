@@ -9,7 +9,7 @@
             </div>
             <div class="TableRightCol">
                 <asp:TextBox ID="NameTextBox" runat="server" MaxLength="50"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="NameRequiredFieldValidator" ControlToValidate="NameTextBox" runat="server" ErrorMessage="The Name must be filled in." Text="*"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="NameRequiredFieldValidator" ControlToValidate="NameTextBox" runat="server" ErrorMessage="Имя не может быть пустым!" Text="*"></asp:RequiredFieldValidator>
             </div>
         </div>
         <div class="TableRow">
@@ -18,7 +18,7 @@
             </div>
             <div class="TableRightCol">
                 <asp:TextBox ID="LoginTextBox" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="LoginRequiredFieldValidator" ControlToValidate="LoginTextBox" runat="server" ErrorMessage="The Login must be filled in." Text="*"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="LoginRequiredFieldValidator" ControlToValidate="LoginTextBox" runat="server" ErrorMessage="Логин не может быть пустым!" Text="*"></asp:RequiredFieldValidator>
             </div>
         </div>
         <div class="TableRow">
@@ -27,7 +27,7 @@
             </div>
             <div class="TableRightCol">
                 <asp:TextBox ID="PasswordTextBox" runat="server" MaxLength="50"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="PasswordFieldValidator" ControlToValidate="PasswordTextBox" runat="server" ErrorMessage="The Password must be filled in." Text="*"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="PasswordFieldValidator" ControlToValidate="PasswordTextBox" runat="server" ErrorMessage="Пароль не может быть пустым!" Text="*"></asp:RequiredFieldValidator>
             </div>
         </div>
         <div class="TableRow">
@@ -36,7 +36,7 @@
             </div>
             <div class="TableRightCol">
                 <asp:TextBox ID="PasswordTextBox2" runat="server" MaxLength="10"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="PasswordTextBox2" runat="server" ErrorMessage="The Password must be filled in." Text="*"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="PasswordTextBox2" runat="server" ErrorMessage="Пароль не может быть пустым!" Text="*"></asp:RequiredFieldValidator>
             </div>
         </div>
         <div class="TableRow">
@@ -46,8 +46,8 @@
             <div class="TableErrors">
                 <asp:ValidationSummary ID="CustomerValidationSummary" runat="server"></asp:ValidationSummary>
             </div>
-            <asp:Button ID="CustomerInsertButton" runat="server" Text="Зарегистрироваться" OnClick="CustomerInsertButton_Click" BackColor="YellowGreen"/>
-            &nbsp;<asp:Button ID="CustomerCancelButton" runat="server" Text="Назад" OnClick="CustomerCancelButton_Click" CausesValidation="false" BackColor="YellowGreen"/>
+            <asp:Button ID="RegButton" runat="server" Text="Зарегистрироваться" OnClick="RegButton_Click" BackColor="YellowGreen"/>
+            &nbsp;<asp:Button ID="CancelButton" runat="server" Text="Назад" OnClick="CancelButton_Click" CausesValidation="false" BackColor="YellowGreen"/>
         </div>
     </div>
     </div>

@@ -4,7 +4,7 @@
     <div class="login">
     <div class="GameTable">
         <div class="GameRow2">
-            <asp:Label ID="Label2" runat="server" Text="Здесь будут драки!"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="Здесь можно работать!"></asp:Label>
          </div>
         <div class="TableRow">
             <div class="GameLeftCol">
@@ -34,9 +34,6 @@
                 </div>
             </div>
              <div class="GameRightCol">
-                <div class="GameRowL">
-                    <asp:Label ID="TypeOfGameLabel" runat="server" Text="Работа" FontSize="25" Width="200"></asp:Label>
-                </div>
                  <div class="GameRowL">
                      <asp:Label ID="EnemyNameLabel" runat="server" Text="" MaximumSize ="150" Height="120"></asp:Label>
                  </div>

@@ -13,7 +13,7 @@
                                     </tr>
                                     <tr>
                                         <td align="right" valign="top" style="width: 307px" >
-                                            <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Имя пользователя:</asp:Label>
+                                            <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Логин:</asp:Label>
                                         </td>
                                         <td class="auto-style2" style="width: 318px">
                                             <asp:TextBox ID="UserName" runat="server"></asp:TextBox>

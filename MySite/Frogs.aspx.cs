@@ -21,7 +21,7 @@ public partial class Frogs : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            id_player = (int)Session["id_player"];
+            id_player = ((Player)Session["Player"]).Id;
             ButtonNo.Visible = false;
             ButtonYes.Visible = false;
             //Заполнение списка жабок
@@ -30,7 +30,7 @@ public partial class Frogs : System.Web.UI.Page
             using (SqlConnection sConn = new SqlConnection(connectionString))
             {
                 sConn.Open();
-                SqlCommand command = new SqlCommand("SELECT * FROM Frogs WHERE Id_Player = '" + (int)Session["id_player"] + "'", sConn);
+                SqlCommand command = new SqlCommand("SELECT * FROM Frogs WHERE Id_Player = '" + id_player + "'", sConn);
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     object val = null;
@@ -79,7 +79,7 @@ public partial class Frogs : System.Web.UI.Page
         }
         else
         {
-            id_player = (int)Session["id_player"];
+            id_player = ((Player)Session["Player"]).Id;
             if (Session["ListFrog"] != null)
                 frogs = (List<Frog>)Session["ListFrog"];
             if (frogs != null)
@@ -259,7 +259,7 @@ public partial class Frogs : System.Web.UI.Page
             sConn.Close();
         }
 
-        TypeOfGameLabel.Text = "Битва";
+        //TypeOfGameLabel.Text = "";
         ButtonNo.Visible = false;
         ButtonYes.Visible = false;
         EnemyNameLabel.Text = "";

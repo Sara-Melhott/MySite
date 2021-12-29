@@ -18,8 +18,9 @@ namespace MyLibrary
 
         }
 
-        public Player(string Name, string Login, string Password)
+        public Player(int Id, string Name, string Login, string Password)
         {
+            this.Id = Id;
             this.Name = Name;
             this.Login = Login;
             this.Password = Password;

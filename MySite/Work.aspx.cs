@@ -21,14 +21,14 @@ public partial class Work : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            id_player = (int)Session["id_player"];
+            id_player = ((Player)Session["Player"]).Id;
             //Заполнение списка жабок
             string connectionString = ConfigurationManager.ConnectionStrings["GameContext"].ConnectionString;
             //Подключение к БД
             using (SqlConnection sConn = new SqlConnection(connectionString))
             {
                 sConn.Open();
-                SqlCommand command = new SqlCommand("SELECT * FROM Frogs WHERE Id_Player = '" + (int)Session["id_player"] + "'", sConn);
+                SqlCommand command = new SqlCommand("SELECT * FROM Frogs WHERE Id_Player = '" + id_player + "'", sConn);
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     object val = null;
@@ -80,7 +80,7 @@ public partial class Work : System.Web.UI.Page
         }
         else
         {
-            id_player = (int)Session["id_player"];
+            id_player = ((Player)Session["Player"]).Id;
             if (Session["ListFrog"] != null)
                 frogs = (List<Frog>)Session["ListFrog"];
             if (frogs != null)
