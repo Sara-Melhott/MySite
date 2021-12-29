@@ -61,7 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppContext.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="Feeding.cs" />
     <Compile Include="Frog.cs" />

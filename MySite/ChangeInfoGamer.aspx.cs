@@ -13,6 +13,8 @@ public partial class ChangeInfoGamer : System.Web.UI.Page
     Player player;
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!(bool)Session["Aut"])
+            Response.Redirect("Error.aspx");
         player = (Player)Session["Player"];
         if (!Page.IsPostBack)
         {

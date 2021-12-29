@@ -1,4 +1,7 @@
-﻿body.template {
+﻿div.default{
+    font-size: 15px;
+}
+body.template {
     padding-left: 8px;
     padding-right: 8px;
     font-family: Tahoma, Arial, sans-serif;

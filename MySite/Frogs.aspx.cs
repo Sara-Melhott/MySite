@@ -19,6 +19,8 @@ public partial class Frogs : System.Web.UI.Page
     //System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!(bool)Session["Aut"])
+            Response.Redirect("Error.aspx");
         if (!Page.IsPostBack)
         {
             id_player = ((Player)Session["Player"]).Id;

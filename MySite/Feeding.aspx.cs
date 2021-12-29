@@ -19,6 +19,8 @@ public partial class Feeding : System.Web.UI.Page
     Frog newFrog = new Frog();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!(bool)Session["Aut"])
+            Response.Redirect("Error.aspx");
         if (!Page.IsPostBack)
         {
             id_player = ((Player)Session["Player"]).Id;
